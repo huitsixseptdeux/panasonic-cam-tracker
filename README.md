@@ -16,6 +16,9 @@ Panasonic's AW-SF100 Auto Tracking Software is the feature and UX reference
 
 ## Install
 
+**New to the project? Follow [SETUP.md](SETUP.md)**: a step-by-step from a fresh
+PC (Git, VS Code, Python, Node) to the app running. The short version:
+
 ```bash
 # backend
 cd backend
@@ -25,10 +28,8 @@ pip install -r requirements.txt
 # GPU build of PyTorch (plain pip gives a CPU-only build):
 pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu124
 
-# face models (OpenCV Zoo, Apache-2.0)
-mkdir -p models
-curl -L -o models/face_detection_yunet_2023mar.onnx https://github.com/opencv/opencv_zoo/raw/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx
-curl -L -o models/face_recognition_sface_2021dec.onnx https://github.com/opencv/opencv_zoo/raw/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx
+# face models + test videos (not in git)
+python scripts/fetch_assets.py
 
 # frontend
 cd ../frontend
