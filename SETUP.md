@@ -57,6 +57,17 @@ and make sure the PATH option was ticked.
 6. A popup offers to install the **recommended extensions**: click **Install**
    (Python, Pylance, ESLint, Prettier).
 
+## Quick way (Windows): two double-clicks
+
+After steps 1–3, open the project folder in File Explorer and:
+
+1. Double-click **`setup.bat`**: installs everything (once, a few minutes).
+2. Double-click **`start.bat`**: opens two windows (backend and frontend) and
+   your browser on the app. Close those two windows to stop it.
+
+That's all you need to try the app. Steps 4–6 below do the same by hand, which
+you'll want once you start changing code.
+
 ## 4. Set up the backend
 
 Open a terminal inside VS Code: menu **Terminal → New Terminal**. It opens in

@@ -9,6 +9,7 @@ interface Props {
 
 const CYAN = "#4cc9f0";
 const OTHER = "rgba(236,236,238,0.55)";
+const YELLOW = "#f2c94c";
 
 export function PreviewCanvas({ imageUrl, meta, onSelect }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -44,7 +45,14 @@ export function PreviewCanvas({ imageUrl, meta, onSelect }: Props) {
       ctx.lineWidth = (selected ? 2 : 1) * scale;
       ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
 
-      const label = `ID ${det.id}`;
+      if (det.face_bbox) {
+        const [fx1, fy1, fx2, fy2] = det.face_bbox;
+        ctx.strokeStyle = YELLOW;
+        ctx.lineWidth = 1.5 * scale;
+        ctx.strokeRect(fx1, fy1, fx2 - fx1, fy2 - fy1);
+      }
+
+      const label = det.person_name ? `${det.person_name} · ${det.id}` : `ID ${det.id}`;
       const pad = 4 * scale;
       const lh = 15 * scale;
       const tw = ctx.measureText(label).width + pad * 2;

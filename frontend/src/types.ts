@@ -4,10 +4,38 @@ export interface SourceInfo {
   label: string;
 }
 
+export type BBox = [number, number, number, number];
+
 export interface DetectionDto {
   id: number;
-  bbox: [number, number, number, number];
+  bbox: BBox;
   conf: number;
+  face_bbox?: BBox | null;
+  person_id?: string | null;
+  person_name?: string | null;
+}
+
+export type FaceMode = "off" | "select" | "auto";
+
+export interface Person {
+  id: string;
+  name: string;
+  order: number;
+  stale: boolean;
+}
+
+export interface FaceCandidate {
+  token: string;
+  bbox: BBox;
+  thumb: string;
+  matches: string | null;
+}
+
+export interface CandidatesResponse {
+  width: number;
+  height: number;
+  image: string;
+  faces: FaceCandidate[];
 }
 
 export interface CropDto {
@@ -29,6 +57,9 @@ export interface StatusDto {
   selected_track_id: number | null;
   person_detected: boolean;
   error: string | null;
+  face_mode?: FaceMode;
+  face_person_id?: string | null;
+  faces_available?: boolean;
 }
 
 export interface FrameMetadata {

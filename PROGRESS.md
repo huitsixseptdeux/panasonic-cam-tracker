@@ -88,8 +88,17 @@
 ## Roadmap
 
 Now / next:
-- [ ] Face UI: People page (grid, add from photo or live frame, rename, delete, drag to
+- [x] Face UI: People page (grid, add from photo or live frame, rename, delete, drag to
       reorder), Face Recognition ON/OFF + Select Face + Auto Face Search on the main screen.
+- [x] `setup.bat` / `start.bat` for one-click install and launch on Windows.
+- [ ] Crash fix: native access violations when the video source is closed while being
+      read (fast source switching) and when webcams are probed concurrently. Cause
+      found with faulthandler; fix proposed (single capture owner, locked + cached
+      webcam probing). Awaiting go.
+- [ ] "People in shot" strip under the image: click a face chip to follow, name unknown
+      faces in place, registered-but-absent people dimmed for pre-selection. Proposed.
+- [ ] Settings the Panasonic way: Setting button under Start/Stop; operator-level
+      Sensitivity 1–10 and lost behaviour first, current sliders under "Advanced". Proposed.
 - [ ] Overlapping boxes: click picks the face first, then nearest box centre; click again
       cycles. (Proposed, awaiting go.)
 - [ ] Better body tracker: ByteTrack-style (motion prediction, two-stage matching) behind

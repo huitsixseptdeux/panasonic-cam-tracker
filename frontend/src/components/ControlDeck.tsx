@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export interface FramingPreset {
   key: string;
   short: string;
@@ -21,9 +23,10 @@ interface Props {
   onToggle: () => void;
   preset: string | null;
   onPreset: (p: FramingPreset) => void;
+  faceGroup?: ReactNode;
 }
 
-export function ControlDeck({ running, canStart, onToggle, preset, onPreset }: Props) {
+export function ControlDeck({ running, canStart, onToggle, preset, onPreset, faceGroup }: Props) {
   return (
     <div className="deck">
       <div className="deck-group">
@@ -61,10 +64,7 @@ export function ControlDeck({ running, canStart, onToggle, preset, onPreset }: P
         </div>
       </div>
 
-      <div className="deck-group">
-        <div className="deck-label">TARGET</div>
-        <p className="hint">Click a person in the image to track them. Click empty space to release.</p>
-      </div>
+      {faceGroup}
     </div>
   );
 }

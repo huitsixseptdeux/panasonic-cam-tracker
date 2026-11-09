@@ -41,7 +41,9 @@ Without the face models the app still runs; face recognition is just disabled.
 
 ## Run
 
-Two terminals:
+Windows shortcut: double-click `setup.bat` once, then `start.bat` each time.
+
+By hand, two terminals:
 
 ```bash
 # 1. backend  (http://127.0.0.1:8000)
@@ -82,14 +84,19 @@ Mixkit clips: `https://assets.mixkit.co/videos/<id>/<id>-720.mp4`, Mixkit Licens
    diagnostics (input resolution, fps, dropped frames, detector device).
    `cuda:0` means detection runs on the first GPU.
 
-### Face recognition (backend done, UI in progress)
+### Face recognition
 
-Register people once, then either follow one specific person or let it follow
-whoever registered is in shot, by priority order. Faces are checked on events
-(new person, target lost, boxes crossing, a periodic confirm), not every frame,
-in a background worker, so video is never slowed down.
+1. **PEOPLE** tab → **+ Add face**: from the live picture or an uploaded photo,
+   click a face, type a name. Drag cards to set priority.
+2. **MAIN** → **FACE** group: turn it **On**, then either **Select face** (follow
+   that person, picked up as soon as they appear) or tick **Auto face search**
+   (follow any registered person, highest priority first).
+3. Recognised people get a yellow face box and their name in the image.
 
-API (until the UI lands):
+Faces are checked on events (new person, target lost, boxes crossing, a periodic
+confirm), not every frame, in a background worker, so video is never slowed down.
+
+API:
 
 | Call | Purpose |
 |---|---|
